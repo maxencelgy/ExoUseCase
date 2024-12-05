@@ -8,7 +8,7 @@ Architecture.
 • Manipuler les couches pour séparer les responsabilités et maintenir un découplage propre.
 
 ## Etape 1 :  Clone le projet
-- git clone <URL_DU_REPOSITORY>
+- git clone https://github.com/maxencelgy/ExoUseCase.git
 - cd library-api
 
 ## Etape 2 :  Installer les dépendances
