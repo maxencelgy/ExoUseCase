@@ -2,31 +2,31 @@
 
 namespace Tests\Unit;
 
-use App\Models\Book;
+use App\Domain\Entities\Book;
 use App\Domain\UseCases\BorrowBook;
-use Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class BorrowBookTest extends TestCase
 {
     public function testCanBorrowAvailableBook()
     {
-        $book = new Book(['title' => 'Livre', 'is_borrowed' => false]);
+        $book = new Book(1, 'Clean Architecture', false);
         $useCase = new BorrowBook();
 
         $result = $useCase->execute($book);
 
         $this->assertTrue($result['success']);
-        $this->assertEquals('Livre', $result['bookTitle']);
+        $this->assertEquals('Clean Architecture', $result['book']['title']);
     }
 
     public function testCannotBorrowAlreadyBorrowedBook()
     {
-        $book = new Book(['title' => 'Livre', 'is_borrowed' => true]);
+        $book = new Book(1, 'Clean Architecture', true);
         $useCase = new BorrowBook();
 
         $result = $useCase->execute($book);
 
         $this->assertFalse($result['success']);
-        $this->assertEquals('Clean Architecture', $result['bookTitle']);
+        $this->assertEquals('Clean Architecture', $result['book']['title']);
     }
 }

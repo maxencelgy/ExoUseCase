@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\BookController;
 
+
 Route::post('/borrow', [BookController::class, 'borrow']);
+Route::post('/return', [BookController::class, 'return']);
 
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//    return $request->user();
+//});

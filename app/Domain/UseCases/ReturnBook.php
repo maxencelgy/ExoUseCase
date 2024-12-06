@@ -4,21 +4,21 @@ namespace App\Domain\UseCases;
 
 use App\Domain\Entities\Book;
 
-class BorrowBook
+class ReturnBook
 {
     public function execute(Book $book): array
     {
-        if ($book->borrow()) {
+        if ($book->return()) {
             return [
                 'success' => true,
-                'message' => 'Book borrowed successfully.',
+                'message' => 'Book returned successfully.',
                 'book' => $book->toArray(),
             ];
         }
 
         return [
             'success' => false,
-            'message' => 'Book is already borrowed.',
+            'message' => 'Book was not borrowed.',
             'book' => $book->toArray(),
         ];
     }
